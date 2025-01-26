@@ -1,8 +1,6 @@
 # Food Delivery Analysis
 
-This proje
-This project was done in collaboration with my friend, Christopher Way.
-
+This project was a collaborative effort for a school assignment. It was our first time doing analytics of any sort, so there are numerous errors. However, it was a good learning experience for both of us.
 
 ## Abstract
 
@@ -20,14 +18,11 @@ Our findings from this project will help users and delivery drivers alike in see
 
 Looking through the dataset, it contains 45,593 rows and 19 unique columns, them being ID, Delivery_person_ID, Delivery_person_Age, Delivery_person_Ratings, Restaurant_latitude, Restaurant_longitude, Delivery_locaiton_latitude, Delivery_location _longitude, Order_Date, Time_Ordered, Time_Order_picked, Weatherconditions, Road_traffic density, V ehicle_condition, Type_of_order, Type_of_vehicle, Multiple_deliveries, Festival, City, and Time_taken(min). The data was collected from February to April, but March had the higher order amount, which was around 31,989 orders.
 
-![Time Taken for Delivery by Weather Conditions](https://github.com/sauthh/food-delivery-analysis/blob/f4da883c805464211b981c9db3de161a991f0a09/Figures/figure1.png)
-
-![Count of Delivery Person Ratings](https://github.com/sauthh/food-delivery-analysis/blob/c1f1fc56379c9f84c319d1f960306f53d936f642/Figures/figure2.png)
+![Time Taken for Delivery by Weather Conditions](https://github.com/sauthh/food-delivery-analysis/blob/f4da883c805464211b981c9db3de161a991f0a09/Figures/figure1.png) ![Count of Delivery Person Ratings](https://github.com/sauthh/food-delivery-analysis/blob/c1f1fc56379c9f84c319d1f960306f53d936f642/Figures/figure2.png)
 
 Our initial findings showed that cloudy and foggy conditions resulted in longer delivery time, so sunny days allowed for faster time. The data contained roughly the same amount of food types: 11,533 snack orders, 11,458 meal orders, 11322 drink orders, and 11,280 buffet orders. Additionally, it took roughly around 26.28 minutes for each type of order. Ages 20-39 were the primary delivery drivers, and ages below or above were not recorded. Next, food was picked up within 15 minutes from order placement no matter the conditions. Motorcycle was also the most popular delivery method, while bicycle was the least preferred by the drivers. Lately, the dataset skewed left for ratings, meaning most were 4.5 or higher.
 
 ![Average Time Taken](https://github.com/sauthh/food-delivery-analysis/blob/2eba44134d0fa6cb788f51bd41f91937b981baf5/Figures/figure3.png) ![Food Amount](https://github.com/sauthh/food-delivery-analysis/blob/2eba44134d0fa6cb788f51bd41f91937b981baf5/Figures/figure4.png)
-
 ![Average Time Taken by Type of Order](https://github.com/sauthh/food-delivery-analysis/blob/2eba44134d0fa6cb788f51bd41f91937b981baf5/Figures/figure5.png)
 
 ## Model Development
@@ -42,12 +37,38 @@ When we ran the various different models, we were looking for three key aspects:
 
 Firstly, running Gradient Boosting gave us a MSE of 33.5651 and R-squared of 0.6162, which was the most accurate of any model we ran. Running a feature importance showed us that the rating of the driver was the most important factor followed by multiple delivered and road traffic density. This makes sense because drivers tend to have a rating around 4.5 and users give 4 or 5 on average. If they have a rating close to a 5, it means they have exceptional service and deliver food in time without messing anything up. For graphing, it had a general upward trend, but there were too many errors when predicting the delivery time to the actual time.
 
-![Gradient Boosting Regression](https://github.com/sauthh/food-delivery-analysis/blob/2eba44134d0fa6cb788f51bd41f91937b981baf5/Figures/figure6.png)
-
+![Gradient Boosting Regression](https://github.com/sauthh/food-delivery-analysis/blob/2eba44134d0fa6cb788f51bd41f91937b981baf5/Figures/figure6.png)<br/>
 ![Actual vs. Predicted Values (Gradient Boosting Regression)](https://github.com/sauthh/food-delivery-analysis/blob/51ea2acae123545514f0633d2b056c6277ae9eba/Figures/figure7.png) ![Feature Importances (Gradient Boosting Regression)](https://github.com/sauthh/food-delivery-analysis/blob/51ea2acae123545514f0633d2b056c6277ae9eba/Figures/figure8.png)
 
-Next, running Decision Tree gave us a MSE of 36.1197, MAE of 4.6407, and R-squared of 0.6065, which was the second most accurate of the models we ran. The graph had a general positive trend, but like Gradient Boosting, it made many errors when predicting the time. For example, when predicting a 10 minute delivery time, the model ranged from approximately 13 minutes to 25 minutes. It also ranked the features as delivery driver rating, multiple deliveries, and delivery person age. This is the same as Gradient Boosting and it makes sense because if a driver were to have multiple deliveries, it would take them additional time to deliver the other food. If a driver predicted wrong and the two (or more) orders were in opposite directions, they would have to spend more time driving from one to the next.
+Next, running Random Forest Regression gave us a MSE of 36.1197, MAE of 4.6407, and R-squared of 0.6065, which was the second most accurate of the models we ran. The graph had a general positive trend, but like Gradient Boosting, it made many errors when predicting the time. For example, when predicting a 10 minute delivery time, the model ranged from approximately 13 minutes to 25 minutes. It also ranked the features as delivery driver rating, multiple deliveries, and delivery person age. This is the same as Gradient Boosting and it makes sense because if a driver were to have multiple deliveries, it would take them additional time to deliver the other food. If a driver predicted wrong and the two (or more) orders were in opposite directions, they would have to spend more time driving from one to the next.
 
-![Decision Tree](https://github.com/sauthh/food-delivery-analysis/blob/51ea2acae123545514f0633d2b056c6277ae9eba/Figures/figure9.png)
+![Random Forest Regression](https://github.com/sauthh/food-delivery-analysis/blob/51ea2acae123545514f0633d2b056c6277ae9eba/Figures/figure9.png)<br/>
 ![Actual vs. Predicted Values (Random Forest Regression)](https://github.com/sauthh/food-delivery-analysis/blob/51ea2acae123545514f0633d2b056c6277ae9eba/Figures/figure10.png) ![Feature Importances (Random Forest Regression)](https://github.com/sauthh/food-delivery-analysis/blob/51ea2acae123545514f0633d2b056c6277ae9eba/Figures/figure11.png)
+
+Lastly, our third most accurate model was Decision Tree where the MSE was 36.1197, MAE was 4.7425, and R-squared was 0.587. The graph it produced also had a general positive trend; however, it was a lot less visually accurate than the other ones. For example, its predictions for 10-25 minute deliveries were about the same and only started guessing higher after that. For feature ranking, it listed them in the order of delivery person age, delivery person ratings, and restaurant latitude and longitude, which is very different compared to the other models. It is interesting that it ranked the person’s age as the most important because we never guessed the driver’s age correlated to how fast they deliver. However, based on the results, we can guess that younger people tend to drive more recklessly than older people, so they deliver food faster. 
+
+![Decision Tree](https://github.com/sauthh/food-delivery-analysis/blob/8a9d0d19434a3ae04cce2ad119e3dc3bbc2f0948/Figures/figure12.png)<br/>
+![Actual vs. Predicted Values (Decision Tree)](https://github.com/sauthh/food-delivery-analysis/blob/8a9d0d19434a3ae04cce2ad119e3dc3bbc2f0948/Figures/figure13.png) ![Feature Importances (Decision Tree)](https://github.com/sauthh/food-delivery-analysis/blob/8a9d0d19434a3ae04cce2ad119e3dc3bbc2f0948/Figures/figure14.png)
+
+## Conclusion
+
+In conclusion, this study presents a comprehensive examination of factors influencing food delivery times. After examining the various models available, Gradient Boosting and Random Forest were determined to be the most effective at predicting food delivery times. It has been found that the rating of a driver is a good indicator of how fast they deliver food. Vehicle type has been found to be a poor indicator of how long it takes a driver to deliver food. Developing a quality model requires significant data cleanup and feature selection, a significant amount of the original dataset had to be purged in order for the model to have any value in predicting delivery times. It appears that for a dataset of this type involving many columns, gradient boosting and random forest regression are useful algorithms to apply when attempting to develop a predictive model.
+
+## Future Work
+
+In terms of future work, we would like to begin exploring larger and more complex datasets. Our dataset was only 45,000 rows maximum, with thousands removed during the data cleanup process. We could likely generate more interesting results through larger datasets. We also would like to use more resource intensive algorithms in order to develop models. The ones we used only required a small amount of computational power, we could possibly get more useful models and information by working with more powerful computers. We also strongly desire to achieve more accuracy with our results. Our highest accuracy achieved in our model development was only a .616 r-squared, we would like to get much closer to 1 on that statistical measure, as well as a lower MSE and MAE.
+
+## Team Reflection
+
+Based on the feedback we received from the milestone report from the professor and TU Dublin students, we made various changes to our project. Firstly, we better outlined the motivation and background for why we chose the data and use cases for why it was important for us to analyze it. We admit that our initial report was not the best in terms of conveying that. Next, there were questions about how the data was collected. We downloaded the data from Kaggle, which tends to give insight into how the data was collected and what the different variables mean; however, the user who uploaded the dataset failed to report how they collected the data and what some columns mean, like vehicle condition. We looked through the discussion and it seems other users are also confused on what specific columns mean and question how the data was collected. We mentioned needing to exclude some columns or rows previously but failed to mention why. Some rows contained erroneous values because they contained “NaN” or 0 for columns that required specific information. After running some code, we found that there was a total of 50.61% missing values from the data and approximately 2.81% missing values from each column.
+
+![Values](https://github.com/sauthh/food-delivery-analysis/blob/8a9d0d19434a3ae04cce2ad119e3dc3bbc2f0948/Figures/figure15.png)
+
+## ChatGPT
+
+A big part of this project was done with the help of ChatGPT, which was allowed and recommended by the professor. All the code was generated using the help of ChatGPT and all the prompts and responses can be found in the [ChatGPT.html](https://github.com/sauthh/food-delivery-analysis/blob/8a9d0d19434a3ae04cce2ad119e3dc3bbc2f0948/ChatGPT.html) 
+
+## Reference
+
+https://www.kaggle.com/datasets/gauravmalik26/food-delivery-dataset
 
