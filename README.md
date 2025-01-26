@@ -22,4 +22,6 @@ Looking through the dataset, it contains 45,593 rows and 19 unique columns, them
 
 ![Time Taken for Delivery by Weather Conditions](https://github.com/sauthh/food-delivery-analysis/blob/f4da883c805464211b981c9db3de161a991f0a09/Figures/figure1.png)
 
+![Count of Delivery Person Ratings](https://github.com/sauthh/food-delivery-analysis/blob/c1f1fc56379c9f84c319d1f960306f53d936f642/Figures/figure2.png)
+
 Our initial findings showed that cloudy and foggy conditions resulted in longer delivery time, so sunny days allowed for faster time. The data contained roughly the same amount of food types: 11,533 snack orders, 11,458 meal orders, 11322 drink orders, and 11,280 buffet orders. Additionally, it took roughly around 26.28 minutes for each type of order. Ages 20-39 were the primary delivery drivers, and ages below or above were not recorded. Next, food was picked up within 15 minutes from order placement no matter the conditions. Motorcycle was also the most popular delivery method, while bicycle was the least preferred by the drivers. Lately, the dataset skewed left for ratings, meaning most were 4.5 or higher.
